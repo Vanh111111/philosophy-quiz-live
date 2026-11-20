@@ -2,7 +2,13 @@ const socket = io();
 const app = document.getElementById('app');
 let role = '', roomCode = '', state = null, answered = false, clock = null, endsAt = 0;
 const $ = s => document.querySelector(s);
-const esc = s => String(s ?? '').replace(/[<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc = s => String(s ?? '').replace(/[<>"']/g, c => ({
+  '&':'&amp;',
+  '<':'&lt;',
+  '>':'&gt;',
+  '"':'&quot;',
+  "'":'&#39;'
+}[c]));
 function shell(content) {
   app.innerHTML = `&lt;div class="wrap"&gt;&lt;div class="top"&gt;&lt;div class="brand"&gt;PHILOSOPHY &lt;span&gt;QUIZ ARENA&lt;/span&gt;&lt;/div&gt;&lt;div class="tag"&gt;LIVE MULTIPLAYER&lt;/div&gt;&lt;/div&gt;${content}&lt;div class="footer"&gt;Triết học Mác - Lênin · Thi đấu trực tuyến&lt;/div&gt;&lt;/div&gt;`;
 }
